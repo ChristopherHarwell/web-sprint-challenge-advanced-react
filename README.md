@@ -29,14 +29,29 @@ Commit your code regularly and meaningfully. This helps both you (in case you ev
 Be prepared to demonstrate your understanding of this week's concepts by answering questions on the following topics. You might prepare by writing down your own answers before hand.
 
 1. Explain how to build stateful class components.
+  add a constructor and add "this.state = { <insert property here>: <insert initial state value here>} below that.
 
 2. Describe the different phases of the component lifecycle.
+initially we have the constructor in the mounting phase, then next we have the render the render is when you see stuff on the screen, in this same phase we also have a final lifecycle method called componentDidMount() which runs after a component has been rendered and mounted to the DOM.
+
+Next we have the updating phase which takes in new props and state values, it does essentially what it says takes in new values and updates the dom and then renders those changes to the dom.
+
+Lastly we have the unmounting phase, which is essentially the end of a components life, when it is removed from the DOM
 
 3. Demonstrate an understanding of class component lifecycle methods.
+componentDidMount runs only after the all the compoenents are rendered to the DOM
+
+componentDidUpdate runs only when a component gets a change in state or props
+
+componentWillUnmount runs immediately before a component is unmounted and destroyed
 
 4. Define stateful logic.
+Stateful logic is any code that uses state for example with hooks it is a way to define reusable behavior that can be used throughout the application.
 
 5. Describe how to test a React component with React Testing Library.
+first you must detemine what you want to test and find out what those preconditions and inputs are. This is the Arrange phase.
+secondly, you must retrieve and test for the values existence, this is called the ACT phase. This is where you define the object or method under test.
+last you assert the expected results have occurred. This is the part where you check to make sure that the code does what is expected.
 
 You are expected to be able to answer questions in these areas. Your responses contribute to your Sprint Challenge grade.
 

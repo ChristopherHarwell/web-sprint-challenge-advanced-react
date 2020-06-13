@@ -1,18 +1,41 @@
-import React, { Component } from "react";
+import React, { Component, setState } from "react";
 import axios from "axios";
 
 export default class PlantList extends Component {
   // add state with a property called "plants" - initialize as an empty array
 
+  constructor(props) {
+    super(props);
+    this.state = {
+      plants: [],
+    };
+  }
   // when the component mounts:
   //   - fetch data from the server endpoint - http://localhost:3333/plants
   //   - set the returned plants array to this.state.plants
-
+  componentDidMount() {
+    /* In the `PlantList` class component, fetch data from
+    the server you now have running - the data can be fetched 
+    from `http://localhost:3333/plants` */
+    axios
+      .get("http://localhost:3333/plants")
+      .then((plantsData) =>
+        // Set the data to a state property called `this.state.plants`
+        this.setState({ plants: plantsData.data.plantsData })
+      )
+      .then(() => console.log(this.state))
+      .catch((err) =>
+        console.error(
+          err,
+          "An Error Occurred in the PlantList.js file between lines 11 and 14"
+        )
+      );
+  }
   /*********  DON'T CHANGE ANYTHING IN THE RENDER FUNCTION *********/
   render() {
     return (
       <main className="plant-list">
-        {this.state?.plants?.map((plant) => (
+        {this.state.plants.map((plant) => (
           <div className="plant-card" key={plant.id}>
             <img className="plant-image" src={plant.img} alt={plant.name} />
             <div className="plant-details">
